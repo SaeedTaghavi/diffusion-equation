@@ -1,0 +1,117 @@
+\section{Numerical Solution of Linear Systems}
+The problem of solving the equation $A \vec{x} = \vec{b} $ is to find the inverse of the coefficient matrix ($A^{-1}$). Multiplying $A^{-1}$ to the both sides of the equation leads to $A^{-1}A \vec{x}=A^{-1} \vec{b}$, with $A^{-1}A=\mathbf{1}$, it becomes $\vec{x} = A^{-1} \vec{b}$. So, it is clear that, all we have to do is to calculate the inverse of the coefficient matrix ($A^{-1}$).
+\\
+numerical methods for solving linear systems of equations can generally be divided into two classes \cite{allaire2008numerical} : 
+\begin{itemize}
+\item \textbf{Direct methods: } In the absence of rundoff error (assuming infinite precision!) such methods would yeild the exact solution, such as Gaussian Elimination, LU Decomposition, and etc.;
+\item \textbf{Iterative methods: } These methods are consist of approximating solutions; start with a first approximation $x^{(0)}$ and compute iteratively a sequence of (hopefully increasingly better) approximations $x^{(i)}$, without ever reaching $x$. Gauss–Seidel Method, Conjugate Gradient Method, and etc. are some well known iterative methods.
+\end{itemize}
+We will explaine more about LU Decomposition, and Conjugate Gradient Method in the next sections.
+
+\subsection{LU Decomposition}
+The LU decomposition method consists in factorizing $A$ into a product of two triangular matrices $A=LU$, where $L$ is lower triangular and $U$ is upper triangular. This decomposition allows us to reduce the solution of the system $Ax = b$ to solving two triangular systems $Ly = b$ and $Ux = y$. Because $L$ and $U$ are triangular matrices finding the inverse matrix for them is much more easier than finding the inverse matrix for a general matrix, so the LU factorization provides a way of computing $A^{-1}$. Here is two-step procedure to find the inverse of a matrix $A$:
+\begin{enumerate}
+\item Find the LU decomposition $A = LU$;
+\item Find the inverse of $A^{-1} = U^{-1}L^{-1}$ by inverting the matrices $U$ and $L$.
+\end{enumerate}
+There are two subroutines in the Linear Algebra PACKage (LAPACK) which do the same job:
+\begin{itemize}
+\item the \textbf{SGETRF} subroutine \footnote{check \texttt{www.netlib.org} for more information on these subroutines} computes an LU factorization of a general M-by-N matrix A using partial pivoting with row interchanges.
+\item the \textbf{SGETRI} subroutine computes the inverse of a matrix using the LU factorization computed by SGETRF.
+\end{itemize}
+
+Our algorithm for solving the one-dimensional heat equation using LU fectorization is summarised as:
+\begin{enumerate} % [noitemsep] removes whitespace between the items for a compact look
+\item assembling system in a desired boundary conditions and building the coeficient matrix($A$);
+\item calculating the inverse of the coeficient matrix($A^{-1}$) using LU decomposition;
+\item setting the initial conditions;
+\item loop over time:
+	\begin{enumerate}
+		\item $\phi^{n} = A^{-1} \phi^{n-1}$;
+	\end{enumerate}
+\end{enumerate}
+
+\subsection{Conjugate Gradient Algorithm}
+The classic Conjugate Gradient non-stationary iterative algorithm as defined in \cite{dongarra1991solving} and references therein can be applied to solve symmetric positive-definite matrix equations. They are preferred over simple Gaussian algorithms because of their faster convergence rate if $A$ is very large and sparse.
+\\
+consider the prototype problem $A \vec{x} = \vec{b}$ to be solved for $\vec{x}$ which can be expressed in the form of iterative equations for the solution $\vec{x}$ and residual (gradient) $\vec{r}$ \cite{hawick1995conjugate}. 
+
+\begin{equation}
+\vec{x}^{k} = \vec{x}^{k-1} +\alpha^{k} \vec{p}^{k}
+\label{eq:CGx}
+\end{equation}
+\begin{equation}
+\vec{r}^{k} = \vec{r}^{k-1} -\alpha^{k} \vec{q}^{k}
+\label{eq:CGr}
+\end{equation}
+
+where  the new value $vec{x}$ is a function of its old value, the scaler step size $\alpha$ and the search direction vector $\vec{p}$ at the $k$'th iteration and $\vec{q^k}=A\vec{p^k}$.
+\\
+The values of $x$ are guaranteed to converge in, at most, $n$ iterations, where $n$ is the order of the system, unless the problem is ill-conditioned in which case roundoff errors often prevent the algorithm from furnishing a suffciently precise solution at the $n$th step. In well-conditioned problems, the number of iterations necessary for satisfactory convergence of the conjugate gradient method can be much less than the order of the system. Therefore, the iterative procedure is continued until the residual $\vec{r}^k=\vec{b}^k-A\vec{x}^k$ meets some stopping criterion, typically of the form: $\| \vec{r}^k \| \leq \text{tol.}$ ($\text{tol.} is$ a tolerance level). The CG algorithm uses:
+\begin{equation}
+\alpha = (\vec{r}^k . \vec{r}^k ) / (\vec{p}^k . A \vec{p}^k)
+\label{eq:CGalpha}
+\end{equation}
+with the search directions chosen using:
+\begin{equation}
+\vec{p}^k=\vec{r}^{k-1}+ \beta^{k-1} \vec{p}^{k-1}
+\label{eq:CGsearchDir}
+\end{equation}
+with 
+\begin{equation}
+\beta^{k-1}= ( \vec{r}^{k-1} . \vec{r}^{k-1} ) / ( \vec{p}^{k-2} . A \vec{p}^{k-2} )
+\label{eq:CGbeta}
+\end{equation}
+which ensures that the search directions form an A-orthogonal system.
+The non-preconditioned CG algorithm for the initial "guessed" solution vector $\vec{x}^0 = 0$ is summarised as:
+\\
+$\vec{p} =\vec{r}=\vec{b}; \ \vec{x}=0 ; \ \vec{q}=A \vec{p}$ \\
+$\rho = \vec{r} . \vec{r} ; \ \alpha = \rho /( \vec{p} . \vec{q} )$\\
+$\vec{x} = \vec{x} + \alpha \vec{p} ; \ \vec{r}= \vec{r} - \alpha \vec{q}$\\
+$ \textbf{DO} \ k=2,Niter$\\
+$ \rightarrow \rho_0 = \rho ; \ \rho= \vec{r} . \vec{r} ; \ \beta = \rho_0 / \rho $\\
+$ \rightarrow  \vec{p}=\vec{r} + \beta \vec{p} ; \ \vec{q}= A \vec{p}$ \\
+$ \rightarrow  \alpha = \rho / ( \vec{p} . \vec{q})$\\
+$ \rightarrow  \vec{x}=\vec{x}+\alpha \vec{p}; \ \vec{r}=\vec{r}-\alpha\vec{q}$\\
+$ \rightarrow  \textbf{IF} \  \text{(stop criterion)} \ \textbf{EXIT} $\\
+$ \textbf{END DO}$\\
+
+The Conjugate Gradient method involves one matrix-vector product, three vector updates, and two inner products per iteration. Implementation of this algorithm requires storage for four vectors: $\vec{x}$ , $\vec{r}$ , $\vec{r}$ and $\vec{q}$ as well as the matrix $A$ and working scalars $\alpha$ and $\beta$. 
+\\
+Note that there are other CG Algorithms too, such as Bi-Conjugate Gradient (BiCG) method which can be applied to non-symmetric matrices.
+\\
+Our algorithm for solving the one-dimensional heat equation using CG is summarised as:
+\begin{enumerate} % [noitemsep] removes whitespace between the items for a compact look
+\item Assembling system in a desired boundary conditions and building the coeficient matrix($A$);
+\item setting the initial conditions;
+\item loop over time:
+	\begin{enumerate}
+		\item Using CG to fing the $\phi$ for the next timestep;
+	\end{enumerate}
+\end{enumerate}
+Also there are maximum tolrrance and maximum iteration for the CG algorithm to be sure whenever each one satisfied the CG loop will break.
+
+
+\begin{figure}[ht]
+  \centering
+  \begin{minipage}{.7\linewidth}
+    \begin{algorithm}[H]
+      \SetAlgoLined
+      \KwData{this text}
+      \KwResult{how to write algorithm with \LaTeX2e }
+      initialization\;
+      \While{not at end of this document}{
+        read current\;
+        \eIf{understand}{
+          go to next section\;
+          current section becomes this one\;
+        }{
+          go back to the beginning of current section\;
+        }
+      }
+      \caption{How to write algorithms}
+    \end{algorithm}
+  \end{minipage}
+\end{figure}
+
+%\input{sections/03-L}

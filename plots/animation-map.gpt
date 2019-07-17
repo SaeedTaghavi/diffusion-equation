@@ -1,0 +1,14 @@
+set pm3d
+set pm3d map
+set term gif animate size 1024,768 delay 50
+set output "animation-map.gif"
+set xrange [0:10]
+set yrange [0:10]
+set zrange [0:100]
+list = system('ls ./output/phi_*')
+
+i = 0
+do for [file in list] {
+    splot file w l
+    i = i + 1
+}

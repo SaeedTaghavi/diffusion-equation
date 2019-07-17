@@ -1,0 +1,56 @@
+\begin{thebibliography}{1}
+
+\bibitem{barrett1994templates}
+Richard Barrett, Michael~W Berry, Tony~F Chan, James Demmel, June Donato, Jack
+  Dongarra, Victor Eijkhout, Roldan Pozo, Charles Romine, and Henk Van~der
+  Vorst.
+\newblock {\em Templates for the solution of linear systems: building blocks
+  for iterative methods}, volume~43.
+\newblock Siam, 1994.
+
+\bibitem{cheng1995distributed}
+Gang Cheng, Kenneth~A Hawick, Gerald Mortensen, and Geoffrey~C Fox.
+\newblock Distributed computational electromagnetics systems.
+\newblock In {\em PPSC}, pages 231--236, 1995.
+
+\bibitem{duff2017direct}
+Iain~S Duff, Albert~Maurice Erisman, and John~Ker Reid.
+\newblock {\em Direct methods for sparse matrices}.
+\newblock Oxford University Press, 2017.
+
+\bibitem{bogusz1994preliminary}
+E~Bogusz, G~Fox, T~Haupt, K~Hawick, and S~Ranka.
+\newblock Preliminary evaluation of high-performance fortran as a language for
+  computational fluid dynamics.
+\newblock In {\em Fluid Dynamics Conference}, page 2262, 1994.
+
+\bibitem{hockney1994parkbench}
+R~Hockney.
+\newblock Parkbench report: Public international benchmarks for parallel
+  computers.
+\newblock {\em Scientific Programming}, 3(2):101--146, 1994.
+
+\bibitem{bailey1995parallel}
+David Bailey, Tim Harris, William Saphir, Rob Van Der~Wijngaart, Alex Woo, and
+  Maurice Yarrow.
+\newblock The nas parallel benchmarks 2.0.
+\newblock Technical report, Technical Report NAS-95-020, NASA Ames Research
+  Center, 1995.
+
+\bibitem{allaire2008numerical}
+Gr{\'e}goire Allaire and Sidi~Mahmoud Kaber.
+\newblock {\em Numerical linear algebra}, volume~55.
+\newblock Springer, 2008.
+
+\bibitem{dongarra1991solving}
+Jack~J Dongarra, Iain~S Duff, Danny~C Sorensen, and Henk~A Van~der Vorst.
+\newblock {\em Solving linear systems on vector and shared memory computers}.
+\newblock Siam Philadelphia., 1991.
+
+\bibitem{hawick1995conjugate}
+KA~Hawick, Kivanc Dincer, Guy Robinson, and GC~Fox.
+\newblock Conjugate gradient algorithms in fortran 90 and high performance
+  fortran.
+\newblock Technical report, NPAC Technical Report SCCS-691, 1995.
+
+\end{thebibliography}

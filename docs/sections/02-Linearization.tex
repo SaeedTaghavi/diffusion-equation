@@ -1,0 +1,33 @@
+\section{Linearization of PDEs}
+There are several established methods to linearize PDEs. The method that will be discussed is finite differences (FD). The solution of PDEs by means of FD is based on approximating derivatives of continuous functions, i.e. the actual partial differential equation, by discretized versions of the derivatives based on discrete points of the functions of interest. For the following example for linearizing the one-dimensional heat equation,  the Forward Difference Method is utilized. Note that this process will work for all linear PDEs. \\
+Finite difference approximations to PDEs can be derived through the use of Taylor series expansions.  Suppose we have a function $f(x)$,  which is continuous and differentiable over the range of interest. Let’s also assume we know the value $f(x_i)$ and all the derivatives at $x=x_i$. The forward Taylor-series expansion for $f(x_{i}+ \Delta x)$, away from the point $x_i$ by a small amount $h$ (sometimes here also denoted by $\Delta x$), gives:
+\begin{equation}
+\label{eq:teylor_expantion}
+f(x_i+h)=f(x_i)+\frac{\partial f(x_i)}{\partial x} h + ... + \frac{\partial^n f(x_i)}{\partial x^n} \frac{h^n}{n!}
+\end{equation}
+We can express the first derivative of $f$ by rearranging equation \ref{eq:teylor_expantion}:
+\begin{equation}
+\frac{\partial f(x_i)}{\partial x}=\frac{f(x_i+h)-f(x_i)}{h} -... - \frac{\partial^n f(x_i)}{\partial x^n} \frac{h^n}{hn!}
+\end{equation}
+If we now only compute the first term of this equation as an approximation, we can writea discretized version:
+\begin{equation}
+\label{eq:forwardFD}
+\frac{\partial f(x_i)}{\partial x}=\frac{f_{i+1}-f_i}{h}
+\end{equation}
+it is called the \textit{forward FD derivative}, where functions $f_i=f(x_i)$ are evaluated at discretely spaced $x_i$ with $x_{i+1}=x_i+h$, wherethe node spacing, or \textit{resolution}, $h$ (or $\Delta x$) is assumed constant.
+\\
+
+We can also expand the Taylor series backward.
+\begin{equation}
+f(x_i-h)=f(x_i)-\frac{\partial f(x_i)}{\partial x} h + ... + \frac{\partial^n f(x_i)}{\partial x^n} \frac{-1^n h^n}{n!}
+\end{equation}
+In this case, the first, backward difference can be obtained by
+\begin{equation}
+\label{eq:backwardFD}
+\frac{\partial f(x_i)}{\partial x}=\frac{f_{i}-f_{i-1}}{h}
+\end{equation}
+By adding equations \ref{eq:forwardFD} and \ref{eq:backwardFD} an approximation of the second derivative is obtained
+\begin{equation}
+\label{eq:secondDerivative}
+f''_i=\frac{f_{i+1}-2f_i+f_{i-1}}{h^2}
+\end{equation}

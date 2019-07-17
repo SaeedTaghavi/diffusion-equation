@@ -1,0 +1,14 @@
+\contentsline {section}{Introduction}{1}{section*.2}
+\contentsline {section}{\numberline {1}Relevant Definitions and Notation}{2}{section.1}
+\contentsline {section}{\numberline {2}Linearization of PDEs}{2}{section.2}
+\contentsline {section}{\numberline {3}One-dimensional heat equation}{3}{section.3}
+\contentsline {section}{\numberline {4}Numerical Solution of Linear Systems}{5}{section.4}
+\contentsline {subsection}{\numberline {4.1}LU Decomposition}{6}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Conjugate Gradient Algorithm}{6}{subsection.4.2}
+\contentsline {section}{\numberline {5}Results for one-dimensional heat equation}{8}{section.5}
+\contentsline {section}{\numberline {6}Two-dimensional diffusion equation}{8}{section.6}
+\contentsline {section}{\numberline {7}Two-dimensional diffusion equation}{14}{section.7}
+\contentsline {section}{\numberline {8}Results for two-dimensional heat equation}{19}{section.8}
+\contentsline {subsection}{\numberline {8.1}The case of constant diffusion coefficient}{19}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}The case of random diffusion coefficient}{19}{subsection.8.2}
+\contentsline {section}{Appendix}{19}{section*.18}

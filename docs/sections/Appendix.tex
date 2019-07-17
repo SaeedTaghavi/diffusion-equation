@@ -1,0 +1,41 @@
+
+\phantomsection
+\section*{Appendix} % The \section*{} command stops section numbering
+\addcontentsline{toc}{section}{Appendix} % Adds this section to the table of contents
+
+As computer architecture advanced, it became more difficult to compare the performance of various computer systems simply by looking at their specifications. Therefore, tests were developed that allowed comparison of different architectures. For example, Pentium 4 processors generally operated at a higher clock frequency than Athlon XP or PowerPC processors, which did not necessarily translate to more computational power; a processor with a slower clock frequency might perform as well as or even better than a processor operating at a higher frequency \footnote{The megahertz myth, or less commonly the gigahertz myth, refers to the misconception of only using clock rate (for example measured in megahertz or gigahertz) to compare the performance of different microprocessors.}.
+\\
+Benchmarks are designed to mimic a particular type of workload on a component or system. Benchmarking is usually associated with assessing performance characteristics of computer hardware, for example, the floating point operation performance of a CPU.
+\subsection*{PARKBENCH}
+The PARKBENCH (PARallel Kernels and BENCHmarks) committee, originally called the Parallel Benchmark Working Group (PBWG) was founded at Supercomputing '92 in Minneapolis, when a group of about 50 people interested in computer benchmarking met under the joint initiative of Tony Hey and Jack Dongarra, and the chairmanship of Roger Hockney. The objectives of the PARKBENCH group are; 
+\begin{itemize} 
+\item To establish a comprehensive set of parallel benchmarks that is generally accepted by both users and vendors of parallel systems.
+
+\item To provide a focus for parallel benchmark activities and avoid unnecessary duplication of effort and proliferation of benchmarks.
+\item To set standards for benchmarking methodology and result-reporting together with a control database/repository for both the benchmarks and the results.
+\item To make the benchmarks and results freely available in the public domain. 
+\end{itemize}
+	
+Further information on PARKBENCH may be obtained at:\\
+ \texttt{http://www.netlib.org/parkbench} .
+
+\subsection*{NAS Parallel Benchmarks}
+
+NAS Parallel Benchmarks (NPB) are a set of benchmarks targeting performance evaluation of highly parallel supercomputers. The NAS Parallel Benchmarks (NPB) are a small set of programs designed to help evaluate the performance of parallel supercomputers.  They are developed and maintained by the NASA Advanced Supercomputing (NAS) Division (formerly the NASA Numerical Aerodynamic Simulation Program) based at the NASA Ames Research Center.
+The benchmarks are derived from computational fluid dynamics (CFD) applications and consist of five kernels and three pseudo-applications. The benchmark suite has been extended to include new benchmarks for unstructured adaptive meshes, parallel I/O, multi-zone applications, and computational grids. 
+\\
+The original eight benchmarks specified in NPB 1 mimic the computation and data movement in CFD applications:
+\begin{itemize}
+  \item IS - Integer Sort, random memory access
+  \item EP - Embarrassingly Parallel
+  \item CG - Conjugate Gradient, irregular memory access and communication
+  \item MG - Multi-Grid on a sequence of meshes, long- and short-distance communication, memory intensive
+  \item FT - discrete 3D fast Fourier Transform, all-to-all communication
+  \item BT - Block Tri-diagonal solver
+  \item SP - Scalar Penta-diagonal solver
+  \item LU - Lower-Upper Gauss-Seidel solver
+\end{itemize}
+and there are several other benchmarks for unstructured computation, parallel I/O, and data movement.
+\\
+As of NPB 3.3, eleven benchmarks are defined. Further information on NAS may be obtained at: \\ \texttt{www.nas.nasa.gov/publications/npb.html} .
+ 

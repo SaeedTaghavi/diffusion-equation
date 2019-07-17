@@ -1,0 +1,13 @@
+set pm3d
+set term png size 1024,1024
+set xlabel "x"
+set ylabel "y"
+list = system('ls ./output/phi_*')
+
+i = 0
+do for [file in list] {
+    set output sprintf('./%s.png', file)
+    set title sprintf("%s | %d fs", file, i)
+    splot file w l
+    i = i + 1
+}

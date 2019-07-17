@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage
+[
+        a4paper,% other options: a3paper, a5paper, etc
+        left=2.5cm,
+        right=2.5cm,
+        top=3cm,
+        bottom=3cm,
+        % use vmargin=2cm to make vertical margins equal to 2cm.
+        % use hmargin=3cm to make horizontal margins equal to 3cm.
+        % use margin=3cm to make all margins  equal to 3cm.
+]
+{geometry}
+%\usepackage[utf8]{inputenc}
+%\usepackage{amssymb}
+%\usepackage{graphicx}
+\usepackage{hyperref}
+%\usepackage[demo]{graphicx}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[ruled,linesnumbered]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{lscape}
+
+
+
+\title{Solving Diffusion Equation}
+\author{Saeed Taghavi$^{1}$, Sarah Yousefizadeh$^{2}$ \\
+$^{1}$ s.taghavi@iasbs.ac.ir\\
+$^{2}$ yousefi@iasbs.ac.ir
+} 
+\date{\today}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+We consider computational issues arising from the basic conjugate gradient algorithm as well as surveying 
+typical application problems that require an iterative solution of large martix-formulated problems. 
+ 
+ \end{abstract}
+% \pagebreak
+
+%\begin{document}
+
+\flushbottom % Makes all text pages the same height
+
+\maketitle % Print the title and abstract box
+\tableofcontents % Print the contents section
+
+\thispagestyle{empty} % Removes page numbering from the first page
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\input{sections/00-Introduction}
+\input{sections/01-Definitions}
+\input{sections/02-Linearization}
+\input{sections/03-One-dimensional}
+\input{sections/04-NumericalSol}
+\input{sections/05-Results1D}
+\input{sections/06-Two-dimensional}
+\input{sections/07-Results2D}
+\input{sections/Appendix} 
+%\input{sections/sample}
+%------------------------------------------------
+
+  
+\bibliographystyle{unsrt}
+\bibliography{ref}
+
+ 
+\end{document}

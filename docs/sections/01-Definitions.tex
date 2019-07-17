@@ -1,0 +1,38 @@
+\section{Relevant Definitions and Notation}
+\textbf{Partial  Differential  Equations} (PDEs) is an equation in which the solution is a function which has two or more independent variables. Linear PDEs are PDEs in which the unknown function and its derivatives all have power 1. The  CG method  is  utilized  to  estimate  solutions  to  linear  PDEs.
+\\
+A solution to a PDE can be found by linearizing into a system of linear equations:
+%\begin{equation}
+\begin{align*}
+  a_{11}x_{1} + a_{12}x_{2} + ...   + a_{1n}x_{n} &= \, b_{1} \\ 
+  a_{21}x_{1} + a_{22}x_{2} + ...    + a_{2n}x_{n} &= \, b_{2} \\ 
+  \vdots   \qquad  \vdots \qquad  \ddots  \qquad  \vdots &= \vdots \\ 
+  a_{n1}x_{1} + a_{n2}x_{2} + ...    + a_{nn}x_{n} &= \, b_{n} \\ 
+\end{align*}
+%\end{equation}
+This system of equations will be written in matrix form $A\vec{x}=\vec{b}$, where 
+\begin{equation}
+A = \begin{bmatrix}
+       a_{11} & a_{12} & ... & a_{1n} \\
+       a_{21} & a_{22} & ... & a_{2n} \\
+       \vdots & \vdots & \ddots & \vdots \\
+       a_{n1} & a_{n2} & ... & a_{nn} \\
+     \end{bmatrix}
+\quad
+x=\begin{bmatrix}
+x_{1} \\ x_{2} \\ \vdots \\ x_{n}
+\end{bmatrix}
+\quad
+b=\begin{bmatrix}
+b_{1} \\ b_{2} \\ \vdots \\ b_{n}
+\end{bmatrix}
+\end{equation}
+The matrix $A$ is referred to as the Coefficient Matrix, and $x$ the Solution Matrix.
+\\
+A matrix is defined to besparseif a large proportion of its entries are zero.
+\\
+A $n \times n$ matrix $A$ is defined to be symmetric if $A=A^T$.
+\\
+A $n \times n$ matrix $A$ is Positive Definite if $x^{T}Ax>0$ for every $n$-dimensional column matrix $x \neq 0$, where $x^T$ is the transpose of vector $x$.
+\\
+Typically systems of equations arising from linearizing PDEs yield coefficient matrices which are sparse. However, when discussing large sparse matrix solutions, it is not sufficient to know that the coefficient  matrix is sparse.  Systems arising from linear PDEs have a coefficient matrix which have non-zero diagonals and all other entries zero. When programming the CG method, a programmer can utilize the sparse characteristic and only program the non-zero diagonals to reduce storage and improve efficiency. In order for the CG method to yield a solution the coefficient matrix needs to be symmetric and positive definite.

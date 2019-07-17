@@ -1,0 +1,11 @@
+\section*{Introduction}
+\addcontentsline{toc}{section}{Introduction} % Adds this section to the table of contents
+An excellent review of iterative solvers and some of the general computational issues for their efficient 
+implementation is given in \cite{barrett1994templates}. 
+\\
+Consider application problems that can be formulated in terms of the matrix equation $A \vec{x} = \vec{b}$. The structure of matrix $A$ is highly dependent on the particular type of application and some applications such as computational electromagnetics give rise to a matrix that is effectively dense \cite{cheng1995distributed} and can be solved using direct methods \cite{duff2017direct} such as Guassian elimination, whereas others such as computational fluid dynamics \cite{bogusz1994preliminary} generate a matrix that is sparse, having most of its elements identically zero. Conjugate gradient (CG) and other iterative methods are prefered over simple Guassian elimination when $A$ is very large and sparse, and where storage space for the full matrix would either be impractical or too slow to access through the secondary memory system. A large number of computational number of computationally expensive scientific and engineering applications, e.g. structural analysis, fluid dynamics, aerodynamics, lattice gauge simulation, and cricuit simulation, are based on the solution of large sparse systems of linear equations.
+Iterative methods are employed in many of these applications. While the CG method itself is no longer considered state-of-the art in terms of its numerical stability and convergence prperties, its computaional structure is similar to that of methods such as Bi-Conjugate Gradient (BiCG). CG codes have been used in a number of benchmark suites
+\footnote{In computing, a benchmark is the act of running a computer program, a set of programs, or other operations, in order to assess the relative performance of an object, normally by running a number of standard tests and trials against it. For more information read the appendix.}
+as PARKBENCH \cite{hockney1994parkbench} and NAS \cite{bailey1995parallel}.\\
+
+In this report we focus on solving a diffution problem using CG algorithm. We start by explaning the CG method for a linear system, then we explaine our problem and discretizing it; finally we use CG method to solve our problem. 
