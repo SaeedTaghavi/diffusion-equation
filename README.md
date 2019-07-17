@@ -1,1 +1,1 @@
-# diffusion-equation
+# diffusion equation
