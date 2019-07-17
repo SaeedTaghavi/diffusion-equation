@@ -2,7 +2,7 @@
 
 |         |            |
 |:-------------:|:-------------:|
-| ![3d-animation][3d-animatio]      | ![alt text][map-animatio] |
+| ![3d-animation][3d-animation]      | ![alt text][map-animation] |
 
 [3d-animation]: ./plots/animation/3d-animation.gif "3d-animation"
 
